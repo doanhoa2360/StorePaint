@@ -1,0 +1,50 @@
+﻿@model PagedList.IPagedList<MyClass.Models.ProductInfo>
+@{
+    ViewBag.Title = "Tất cả sản phẩm ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@using PagedList.Mvc;
+<section class="maincontent clearfix">
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                    @Html.Action("ListSupplier", "Module")
+                    @Html.Action("PostLastNew", "Module")
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <div class="category-title position-relative">
+                    <h2 class="text-center text-uppercase text-warning">Tất cả sản phẩm</h2>
+                </div>
+
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-3 text-center card">
+                            <a href="@product.Slug">
+                                <img src="~/Public/images/Products/@product.Img" class="img-fluid card-img-top" alt="...">
+                            </a>
+                            <div class=" card-body">
+                                <h5> <a href="#" class="text-decoration-none text-black">  @product.Name </a></h5>
+                                <span class='text-decoration-line-through'>@string.Format("{0:0,0}", product.Price)<sup>đ</sup></span>
+                                <span class='fw-bold fs-5 text-danger'>@string.Format("{0:0,0}", product.PriceSale)<sup>đ</sup></span>
+                                <a href="@Url.Action("CartAdd","Giohang",new {productid=product.Id })" class="btn btn-sm btn-info"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="Page navigation example">
+                            @Html.PagedListPager(Model, page => Url.Action("Product", "Site", new { page }))
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

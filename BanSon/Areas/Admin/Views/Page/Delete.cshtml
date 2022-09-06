@@ -1,0 +1,87 @@
+﻿@model MyClass.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content my-2">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>CHI TIẾT TIÊU ĐỀ BÀI VIẾT</strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Edit","Page", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Cập nhật</a>
+                    <a href="@Url.Action("Index", "Page")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i>Về danh sách</a>
+                    <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash-alt">Xóa</i></button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width:120px">Tên trường</th>
+                    <th>Nội dung</th>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TopicId)</td>
+                    <td>@Html.DisplayFor(model => model.TopicId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Title)</td>
+                    <td>@Html.DisplayFor(model => model.Title)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Slug)</td>
+                    <td>@Html.DisplayFor(model => model.Slug)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Detail)</td>
+                    <td>@Html.DisplayFor(model => model.Detail)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Img)</td>
+                    <td>@Html.DisplayFor(model => model.Img)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.PostType)</td>
+                    <td>@Html.DisplayFor(model => model.PostType)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Metakey)</td>
+                    <td>@Html.DisplayFor(model => model.Metakey)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.MetaDesc)</td>
+                    <td>@Html.DisplayFor(model => model.MetaDesc)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.CreatedBy)</td>
+                    <td>@Html.DisplayFor(model => model.CreatedBy)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.CreatedAt)</td>
+                    <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+                </tr>
+                <tr>
+                    <td> @Html.DisplayNameFor(model => model.UpdateBy)</td>
+                    <td>@Html.DisplayFor(model => model.UpdateBy)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.UpdateAt)</td>
+                    <td>@Html.DisplayFor(model => model.UpdateAt)</td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Status)</td>
+                    <td>@Html.DisplayFor(model => model.Status)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- /.card -->
+
+</section>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<MyClass.Models.Menu>
+<h3>Thông tin cần biết</h3>
+<ul>
+    @foreach (var menu in Model)
+    {
+        <li> <a class="text-decoration-none" href="@menu.Link">@menu.Name </a></li>
+    }
+</ul>

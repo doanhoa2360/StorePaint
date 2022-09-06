@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MyClass.Models.Supplier>
+<div class="listsupplier md-4 py-2">
+    <div class="card" style="width: 100%;">
+        <div class="card-header bg-main">
+            DANH SÁCH THƯƠNG HIỆU
+        </div>
+        <ul class="list-group list-group-flush">
+            @foreach (var supplier in Model)
+            {
+                <li class="list-group-item">
+                    <a class="text-decoration-none text-uppercase" href="@supplier.Slug">@supplier.Name</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</div>
+

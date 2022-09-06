@@ -1,0 +1,35 @@
+﻿@{
+    var user = ViewBag.User;
+}
+
+@if (Session["UserCustomer"].Equals(""))
+{
+    <a class="btn btn-outline-primary " href="~/dang-nhap">Đăng nhập</a>
+    <a class="btn btn-outline-primary " href="~/dang-ky">Đăng ký</a>
+}
+else
+{
+<a class="btn btn-primary" title="@user.FullName" href="~/thong-tin-khach-hang">@user.FullName</a>
+    <a class="btn btn-outline-primary" href="~/dang-xuat">Đăng xuất</a>
+}
+
+
+@{
+    int soluong = 0;
+    if (!System.Web.HttpContext.Current.Session["MyCart"].Equals(""))
+    {
+        List<CartItem>
+    listcart = (List<CartItem>
+        )System.Web.HttpContext.Current.Session["MyCart"];
+        soluong = listcart.Count();
+    }
+    <a href="~/gio-hang" class="btn btn-outline-primary shadow-sm  position-relative " data-open="#cart-popup"
+       data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
+        <i class="fas fa-shopping-cart" data-icon-label="0"> </i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            @soluong
+            <span class="visually-hidden">unread messages</span>
+        </span>
+    </a>
+
+}

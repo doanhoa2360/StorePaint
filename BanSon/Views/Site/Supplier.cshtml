@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MyClass.Models.Supplier>
+@{
+    ViewBag.Title = "Tất cả thương hiệu";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-3 col-lg-3">
+                <div class="sidebar">
+                    @Html.Action("ListCategory", "Module")
+                    @Html.Action("PostLastNew", "Module")
+                </div>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <div class="category-title position-relative">
+                    <h2 class="text-center text-uppercase text-warning">Tất cả thương hiệu</h2>
+                </div>
+
+                <div class="row">
+                    @foreach (var supplier in Model)
+                    {
+                        <div class="col-md-4">
+                            <a href="@supplier.Slug">
+                                <img src="~/Public/images/Suppliers/@supplier.Img" class="card-img-center" style="width:120px" alt="...">
+                            </a>
+                        </div>
+                    }
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

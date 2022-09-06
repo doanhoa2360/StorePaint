@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MyClass.Models.Menu>
+
+@{
+    ViewBag.Title = "Trash";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<section class="content my-2">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong class="text-danger text-uppercase">THÙNG RÁC MENU</strong>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="@Url.Action("Index", "Menu")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i>Về danh sách</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.Partial("Message")
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Tên menu</th>
+                    <th>Liên kết</th>
+                    <th>Kiểu menu</th>
+                    <th>Vị trí</th>
+                    <th>Chức năng</th>
+                    <th>ID</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Link</td>
+                        <td>@item.TypeMenu</td>
+                        <td>@item.Position</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Retrash","Menu", new { id = item.Id })" class="btn btn-sm btn-info"><i class="fas fa-undo-alt"></i></a>
+                            <a href="@Url.Action("Delete","Menu", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                        <td>@item.Id</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <!-- /.card -->
+
+</section>
+

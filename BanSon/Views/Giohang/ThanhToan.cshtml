@@ -1,0 +1,142 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@{
+    var user = ViewBag.User;
+}
+@using (Html.BeginForm("DatMua", "Giohang", FormMethod.Post))
+{
+    <section class="main-container clearfix">
+        <div class="container my-3">
+            <div class="row">
+                <div class="category-title position-relative py-2">
+                    <h2 class="text-center text-uppercase ">Thanh Toán</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:70px;" class="text-center">Mã SP</th>
+                                    <th style="width:100px;" class="text-center">Hình</th>
+                                    <th class="text-center">Tên sản Phẩm</th>
+                                    <th class="text-center">Giá</th>
+                                    <th style="width:100px;" class="text-center">Số lượng </th>
+                                    <th class="text-center">Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ decimal tongtien = 0;}
+                                @foreach (var cart in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">@cart.ProductId</td>
+                                        <td> <img src="~/Public/images/Products/@cart.Img" class="img-fluid card-img-top" alt="@cart.Name"></td>
+                                        <td class="text-center">@cart.Name</td>
+                                        <td class="text-center"> @string.Format("{0:0,0}", cart.Price) VNĐ</td>
+                                        <td class="text-center">@cart.Qty</td>
+                                        <td class="text-center">@string.Format("{0:0,0}", cart.Amount) VNĐ</td>
+                                    </tr>
+                                    tongtien += cart.Amount;
+                                }
+                            </tbody>
+                        </table>
+                        <div class="form-group">
+                            <h2 class="text-center">Thông tin khách hàng</h2>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Họ tên khách hàng: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="FullName" value="@user.FullName" readonly class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Số điện thoại: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="Phone" value="@user.Phone" readonly class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Địa chỉ Email: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="Email" value="@user.Email" readonly class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Địa chỉ: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="Address" value="@user.Address" readonly class="form-control" />
+                                </div>
+                            </div>
+
+                            <h2 class="text-center">Thông tin người nhận hàng</h2>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Họ tên người nhận: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="ReceiverName" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Số điện thoại người nhận: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="ReceiverPhone" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Email người nhận: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="ReceiverEmail" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Địa chỉ nhận hàng: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="ReceiverAddress" class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="row py-2">
+                                <div class="col-md-3">
+                                    <label>Ghi chú: </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea name="Note" rows="2" class="form-control"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Thông tin</h2>
+                        <p>Tổng tiền: @string.Format("{0:0,0}", tongtien) VNĐ</p>
+                        <p>Giảm: ... VNĐ</p>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary">Đặt mua</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

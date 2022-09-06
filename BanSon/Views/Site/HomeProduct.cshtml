@@ -1,0 +1,36 @@
+﻿@model IEnumerable<MyClass.Models.ProductInfo>
+@{
+    var category = ViewBag.Category;
+
+
+}
+@if (Model.Count() != 0)
+{
+    <div class="category-title position-relative py-2">
+        <h2 class="text-center text-uppercase text-warning">@category.Name</h2>
+        <a class="float-end position-absolute top-0 end-0 py-2 text-decoration-none" href="~/@category.Slug">Xem tất cả</a>
+    </div>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-3 text-center card">
+                <a href="@product.Slug">
+                    <img src="~/Public/images/Products/@product.Img" class="img-fluid card-img-top" alt="...">
+                </a>
+                <div class=" card-body ">
+                    <h5> <a href="@product.Slug" class="text-decoration-none text-black">  @product.Name </a></h5>
+                    <span class='text-decoration-line-through'>@string.Format("{0:0,0}", product.Price)<sup>đ</sup></span>
+                    <span class='fw-bold fs-5 text-danger'>@string.Format("{0:0,0}", product.PriceSale)<sup>đ</sup></span>
+                    <a href="@Url.Action("CartAdd","Giohang",new {productid=product.Id })" class="btn btn-sm btn-info"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+
+        }
+
+    </div>
+    @*<div>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=5829073507108478&autoLogAppEvents=1" nonce="o2dVtySy"></script>
+        <div class="fb-comments" data-href="https://localhost:44395/" data-width="" data-numposts="5"></div>
+    </div>*@
+}

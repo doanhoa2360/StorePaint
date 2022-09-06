@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/template/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/Public/css/LayoutSite.css" rel="stylesheet" />
+
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <section class="header clearfix bg-main">
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-md-2 logo">
+                    <img src="~/Public/images/logo.png" alt="Logo" class="img-fluid" style="width:120px" />
+                </div>
+                <div class="col-md-6 py-5">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-4 text-center py-5">
+                    @Html.Action("Account", "Module")
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mainmenu clearfix bg-main">
+        <div class="container border-top border-light">
+            @Html.Action("MainMenu", "Module")
+        </div>
+     
+    </section>
+    <section class="maincontent clearfix">
+        @RenderBody()
+    </section>
+    <section class="footer clearfix bg-footer py-4 text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Sơn nội thất</h3>
+                    <p>
+                        Sơn nội thất chính là một trong những mối quan tâm hàng đầu của khách hàng khi muốn trang trí hoàn thiện cho ngôi nhà của mình.
+                        Tuy nhiên sơn nội thất nào tốt nhất hiện nay? là câu hỏi được nhiều khách hàng thắc mắc khi có nhu cầu muốn tìm mua sơn.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    @Html.Action("MenuFooter", "Module")
+                </div>
+                <div class="col-md-3">
+                    <h3>Trợ giúp</h3>
+                    <ul>
+                        <li><strong>Hotline</strong>: 0258954555</li>
+                        <li><strong>Email</strong>: son@gmail.com</li>
+                        <li><strong>Địa chỉ</strong>: 439/13 Lê Văn Quới, P. Bình Trị Đông A, Q. Bình Tân, Tp. HCM </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Follow US</h3>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <a href="https://www.facebook.com/nulavietnam/">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="https://www.instagram.com/nulavietnam/">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="https://www.youtube.com/nulachannel/UC4laStpu8xuPlqIy6r95tmQ">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <a href="https://localhost:44383/">
+                                <img src="~/Public/images/logo.png" style="width:120px">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright clearfix bg-footer py-2">
+        <div class="container border-top border-light">
+            
+                <div class=" text-light text-center">
+                    Bản quyền cung cấp bởi Đoàn Thị Hoa
+                </div>
+                
+            
+        </div>
+    </section>
+
+
+
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("footer", required: false)
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@model MyClass.Models.Product
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="maincontent clearfix">
+    <div class="container my-3">
+        <div class="row product-info">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <img src="~/Public/images/Products/@Model.Img" class="card-img-top" style="width:250px" alt="...">
+            </div>
+            <div class="col-md-6">
+                <h1 class="product-title text-warning">@Model.Name</h1>
+
+                <h5>Giá gốc:   <span class='text-decoration-line-through fw-bold fs-5 '>@string.Format("{0:0,0}", Model.Price)<sup>đ</sup></span></h5>
+                <h5> Giá khuyến mãi: <span class='fw-bold fs-5 text-danger'>@string.Format("{0:0,0}", Model.PriceSale)<sup>đ</sup></span></h5>
+                <div class="row product-detail ">
+                    <h5><strong><u>CHI TIẾT SẢN PHẨM:</u></strong></h5>
+                    <p>@Html.Raw(HttpUtility.HtmlDecode(Model.Detail))</p>
+                    <a href="@Url.Action("CartAdd","Giohang",new {productid=Model.Id })" class="btn btn-sm btn-info"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                </div>
+              
+                </div>
+        </div>
+        <div class="row product-detail ">
+            <h5><strong>SẢN PHẨM CÙNG LOẠI</strong></h5>
+            <div class="col-md-3">
+                @foreach (var product in ViewBag.ListOther)
+                {
+                    <a href="@product.Slug">
+                        <img src="~/Public/images/Products/@product.Img" style="width:120px" alt="...">
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
